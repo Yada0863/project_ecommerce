@@ -10,7 +10,7 @@
                 <!-- Dashboard -->
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" 
                     class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
-                    {{ __('Dashboard') }}
+                    {{ __('Home') }}
                 </x-nav-link>
 
                 <!-- Promotion -->
