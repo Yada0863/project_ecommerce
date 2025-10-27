@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Database Bakery</title>
+    <title>Register - Database Bakery</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen flex flex-col" style="background-color: #FAF6F0;">
@@ -11,7 +11,7 @@
     <!-- Header -->
     <header class="flex items-center px-8 py-3 bg-white shadow-sm">
         <img src="{{ asset('images/logo.png') }}" alt="Database Bakery Logo" class="w-10 h-10 mr-3">
-        <h1 class="text-lg font-semibold text-gray-700">Sign Up</h1>
+        <h1 class="text-lg font-semibold text-gray-700">Register</h1>
     </header>
 
     <!-- Main content -->
@@ -28,7 +28,7 @@
 
             <!-- Right side: Sign Up form -->
             <div class="bg-white rounded-lg shadow-md p-8 w-80">
-                <h3 class="text-lg font-semibold text-gray-700 mb-4">Sign Up</h3>
+                <h3 class="text-lg font-semibold text-gray-700 mb-4">Register</h3>
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -89,7 +89,7 @@
                     <button type="submit"
                         class="w-full py-2 rounded-md text-white font-semibold hover:opacity-90 transition"
                         style="background-color: #704214;">
-                        Sign Up
+                        Register
                     </button>
                 </form>
 
