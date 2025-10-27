@@ -25,4 +25,10 @@ class OrderItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+     public function promotion()
+    {
+        return $this->belongsTo(Promotion::class); //
+    }
+
 }

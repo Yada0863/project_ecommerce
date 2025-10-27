@@ -1,8 +1,12 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800">Checkout</h2>
-    </x-slot>
-
+    <div class="bg-white w-full py-4">
+        <div class="container mx-auto px-4">
+            <h2 class="font-semibold text-xl"  style="color: #4A403A;">
+                Checkout
+            </h2>
+        </div>
+    </div>
+    <div class="min-h-screen" style="background-color: #FAF6F0;">
     <div class="max-w-2xl mx-auto py-8">
         <form action="{{ route('order.place') }}" method="POST" class="bg-white p-6 rounded shadow">
             @csrf
@@ -39,9 +43,10 @@
                 Total: ฿{{ number_format(collect($cart)->sum(fn($i) => $i['price'] * $i['quantity']), 2) }}
             </p>
 
-            <button type="submit" class="mt-6 bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+            <button type="submit" class="mt-6 text-white px-6 py-2 rounded " style="background-color: #8B5E3C;">
                 Place Order
             </button>
         </form>
+    </div>
     </div>
 </x-app-layout>

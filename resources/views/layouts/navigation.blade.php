@@ -1,21 +1,33 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             {{-- Left: Logo + Nav --}}
             <div class="flex items-center space-x-8">
                 <a href="{{ route('dashboard') }}" class="flex items-center">
-                    <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    <img src="{{ asset('images/logo.png') }}"  class="h-14 w-auto"/>
                 </a>
 
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <!-- Dashboard -->
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" 
+                    class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                     {{ __('Dashboard') }}
                 </x-nav-link>
 
-                <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
+                <!-- Promotion -->
+                <x-nav-link :href="route('promotions.index')" :active="request()->routeIs('promotions.*')" 
+                    class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
+                    {{ __('Promotion') }}
+                </x-nav-link>
+
+                <!-- Product -->
+                <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')" 
+                    class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                     {{ __('Product') }}
                 </x-nav-link>
-                {{-- Orders --}}
-                <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.*')">
+
+                <!-- My Orders -->
+                <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.*')" 
+                    class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                     {{ __('My Orders') }}
                 </x-nav-link>
             </div>
@@ -25,10 +37,11 @@
                 @auth
                     <!-- Cart Button -->
                     <div class="hidden sm:flex sm:items-center sm:ms-6">
-                        <a href="{{ route('cart.index') }}" class="relative inline-flex items-center text-gray-700 hover:text-brown-600">
+                        <a href="{{ route('cart.index') }}" 
+                           class="relative inline-flex items-center text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                             🛒
                             <span id="cart-count" 
-                                class="absolute -top-2 -right-2 bg-brown-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                                  class="absolute -top-2 -right-2 bg-brown-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                                 {{ session('cart') ? count(session('cart')) : 0 }}
                             </span>
                         </a>
@@ -36,7 +49,7 @@
 
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
+                            <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                                 <span>{{ Auth::user()->name }}</span>
                                 <svg class="ml-1 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill="currentColor" fill-rule="evenodd"
@@ -47,12 +60,14 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.show')">
+                            <x-dropdown-link :href="route('profile.show')" 
+                                             class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <x-dropdown-link :href="route('logout')"
+                                <x-dropdown-link :href="route('logout')" 
+                                                 class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]"
                                                  onclick="event.preventDefault(); this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
@@ -60,10 +75,12 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                    <a href="{{ route('login') }}" 
+                       class="text-sm text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                         {{ __('Login') }}
                     </a>
-                    <a href="{{ route('register') }}" class="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                    <a href="{{ route('register') }}" 
+                       class="text-sm text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                         {{ __('Register') }}
                     </a>
                 @endauth
@@ -71,7 +88,8 @@
 
             {{-- Mobile Menu Button --}}
             <div class="flex sm:hidden">
-                <button @click="open = ! open" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:outline-none">
+                <button @click="open = ! open" 
+                        class="p-2 rounded-md text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
                               stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -86,48 +104,66 @@
     </div>
 
     {{-- Mobile Dropdown --}}
-    <div x-show="open" class="sm:hidden border-t border-gray-200 dark:border-gray-600">
+    <div x-show="open" class="sm:hidden border-t border-gray-200">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <!-- Dashboard -->
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" 
+                class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
+
+            <!-- Promotion -->
+            <x-responsive-nav-link :href="route('promotions.index')" :active="request()->routeIs('promotions.*')" 
+                class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
+                {{ __('Promotion') }}
+            </x-responsive-nav-link>
+
+            <!-- Product -->
+            <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')" 
+                class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                 {{ __('Product') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.*')">
+
+            <!-- My Orders -->
+            <x-responsive-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.*')" 
+                class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                 {{ __('My Orders') }}
             </x-responsive-nav-link>
         </div>
 
-        <div class="pt-4 pb-3 border-t border-gray-200 dark:border-gray-600">
+        <div class="pt-4 pb-3 border-t border-gray-200">
             @auth
                 <div class="px-4">
-                    <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-[#4A403A] !text-[#4A403A]">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-[#4A403A] !text-[#4A403A]">{{ Auth::user()->email }}</div>
                 </div>
 
                 <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.show')">
+                    <x-responsive-nav-link :href="route('profile.show')" 
+                                           class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault(); this.closest('form').submit();">
+                        <x-responsive-nav-link :href="route('logout')" 
+                                               class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]"
+                                               onclick="event.preventDefault(); this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>
                 </div>
             @else
                 <div class="space-y-1 px-4">
-                    <x-responsive-nav-link :href="route('login')">
+                    <x-responsive-nav-link :href="route('login')" 
+                                           class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                         {{ __('Login') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('register')">
+                    <x-responsive-nav-link :href="route('register')" 
+                                           class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
                         {{ __('Register') }}
                     </x-responsive-nav-link>
                 </div>
             @endauth
         </div>
     </div>
-</nav>
+</nav> 

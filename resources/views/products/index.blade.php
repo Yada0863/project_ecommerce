@@ -1,8 +1,6 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800">Our Products</h2>
-    </x-slot>
 
+    <div class="min-h-screen" style="background-color: #FAF6F0;">
     <div class="container mx-auto px-4 py-6">
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             @foreach($products as $product)
@@ -26,9 +24,9 @@
                             </div>
                             
                             <!-- Quantity Controls -->
-                            <div class="flex items-center gap-1 bg-amber-100 rounded px-1.5 py-0.5">
+                            <div class="flex items-center gap-1 rounded px-1.5" style="background-color: #C8A98C; py-0.5;">
                                 <button type="button" 
-                                        class="quantity-minus w-5 h-5 flex items-center justify-center bg-amber-200 rounded hover:bg-amber-300 transition-colors" 
+                                        class="quantity-minus w-5 h-5 flex items-center justify-center rounded hover:bg-[#B7987A] transition-colors" 
                                         data-product-id="{{ $product->id }}">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
@@ -37,7 +35,7 @@
                                 <span class="quantity-display w-5 text-center font-semibold text-xs" 
                                       data-product-id="{{ $product->id }}">1</span>
                                 <button type="button" 
-                                        class="quantity-plus w-5 h-5 flex items-center justify-center bg-amber-200 rounded hover:bg-amber-300 transition-colors" 
+                                        class="quantity-plus w-5 h-5 flex items-center justify-center rounded hover:bg-[#B7987A] transition-colors" 
                                         data-product-id="{{ $product->id }}">
                                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
@@ -59,12 +57,10 @@
                             
                             @auth
                                 <button type="submit" 
-                                        class="w-full bg-amber-600 text-white py-1.5 rounded-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-2 text-sm">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                    </svg>
-                                    Add To Cart
-                                </button>
+                                            style="background-color: #C8A98C; border: 3px solid #8B5E3C; color: #4A403A;"
+                                            class="w-full py-1.5 rounded-lg hover:bg-[#B7987A] transition-colors flex items-center justify-center gap-2 text-sm">
+                                        Add To Cart
+                                    </button>
                             @else
                                 <button type="button" 
                                         onclick="alert('⚠️ Please login to add to cart!')" 
@@ -82,7 +78,7 @@
             @endforeach
         </div>
     </div>
-
+    </div>
     <script>
     document.addEventListener("DOMContentLoaded", () => {
         // Quantity Controls

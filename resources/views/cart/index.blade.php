@@ -1,22 +1,27 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800">Shopping Cart</h2>
-    </x-slot>
 
+<x-app-layout>
+    <div class="bg-white w-full py-4">
+        <div class="container mx-auto px-4">
+            <h2 class="font-semibold text-xl"  style="color: #4A403A;">
+                Shopping Cart
+            </h2>
+        </div>
+    </div>
+    <div class="min-h-screen" style="background-color: #FAF6F0;">
     <div class="container mx-auto px-4 py-6">
         <div id="cart-wrapper">
             <!-- ตรวจสอบว่าตะกร้าว่างหรือไม่ -->
             @if(empty($cart) || count($cart) === 0)
                 <div class="bg-white rounded-lg shadow p-8 text-center" id="empty-cart">
                     <p class="text-gray-500 text-lg">Your cart is empty.</p>
-                    <a href="{{ route('products.index') }}" class="mt-4 inline-block bg-amber-600 text-white px-6 py-2 rounded-lg hover:bg-amber-700">
+                    <a href="{{ route('products.index') }}" class="mt-4 inline-block text-white px-6 py-2 rounded-lg" style="background-color: #8B5E3C;">
                         Continue Shopping
                     </a>
                 </div>
             @else
                 <div class="bg-white rounded-lg shadow overflow-hidden" id="cart-content">
                     <!-- Table Header -->
-                    <div class="bg-amber-200 grid grid-cols-12 gap-4 p-4 font-semibold text-gray-700">
+                    <div class="grid grid-cols-12 gap-4 p-4 font-semibold text-gray-700" style="background-color: #C8A98C;">
                         <div class="col-span-5">Product</div>
                         <div class="col-span-2 text-center">Unit Price</div>
                         <div class="col-span-2 text-center">Quantity</div>
@@ -39,10 +44,10 @@
                                     <span class="text-gray-700">{{ number_format($item['price'],0) }} THB</span>
                                 </div>
                                 <div class="col-span-2 flex justify-center">
-                                    <div class="flex items-center gap-2 bg-amber-100 rounded px-2 py-1">
-                                        <button type="button" class="qty-decrease w-7 h-7 flex items-center justify-center bg-amber-200 rounded hover:bg-amber-300 transition-colors">-</button>
-                                        <input type="text" class="qty-display w-12 text-center font-semibold border-none bg-transparent" value="{{ $item['quantity'] }}">
-                                        <button type="button" class="qty-increase w-7 h-7 flex items-center justify-center bg-amber-200 rounded hover:bg-amber-300 transition-colors">+</button>
+                                    <div class="flex items-center gap-2 rounded px-2 py-1">
+                                        <button type="button" class="qty-decrease w-7 h-7 flex items-center justify-center bg-[#B7987A] transition-colors">-</button>
+                                        <input type="text" class="qty-display w-8 h-8 text-center font-semibold border-none bg-white" value="{{ $item['quantity'] }}">
+                                        <button type="button" class="qty-increase w-7 h-7 flex items-center justify-center bg-[#B7987A] transition-colors">+</button>
                                     </div>
                                 </div>
                                 <div class="col-span-2 text-center">
@@ -56,21 +61,22 @@
                     </div>
 
                     <!-- Cart Summary -->
-                    <div class="bg-amber-100 p-6">
-                        <div class="flex justify-end items-center gap-8">
+                    <div class="p-6" style="background-color: #C8A98C;">
+                        <div class="flex justify-end items-center gap-8" style="background-color: #C8A98C;">
                             <div class="text-right">
                                 <p class="text-gray-600 mb-1">Total (<span id="total-items">{{ array_sum(array_column($cart,'quantity')) }}</span> items) :</p>
                                 <p class="text-3xl font-bold text-gray-800">
                                     <span id="cart-total">{{ number_format(array_sum(array_map(fn($i)=>$i['price']*$i['quantity'],$cart)),0) }}</span> THB
                                 </p>
                             </div>
-                            <a href="{{ route('checkout') }}" class="bg-amber-700 text-white px-8 py-3 rounded-lg hover:bg-amber-800 transition-colors font-semibold text-lg">
+                            <a href="{{ route('checkout') }}" class="text-white px-8 py-3 rounded-lg hover:bg-amber-800 transition-colors font-semibold text-lg" style="background-color: #8B5E3C;">
                                 Check Out
                             </a>
                         </div>
                     </div>
                 </div>
             @endif
+        </div>
         </div>
     </div>
 

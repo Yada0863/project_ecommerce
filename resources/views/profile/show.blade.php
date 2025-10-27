@@ -1,8 +1,14 @@
+
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800">My Profile</h2>
-        <p class="text-sm text-gray-500">Manage and protect your profile</p>
-    </x-slot>
+
+    <div class="bg-white w-full py-4">
+        <div class="container mx-auto px-4">
+            <h2 class="font-semibold text-xl"  style="color: #4A403A;">
+                My Profile
+            </h2>
+            <p class="font-semibold text-m" style="color: #4A403A;">Manage and protect your profile</p>
+        </div>
+    </div>
 
     <div class="py-12 bg-[#F9F5F1] min-h-screen">
         <div class="max-w-5xl mx-auto bg-white shadow-md rounded-xl p-8 flex justify-between gap-10">

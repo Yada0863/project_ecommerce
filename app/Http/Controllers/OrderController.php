@@ -40,13 +40,18 @@ class OrderController extends Controller
         ]);
 
         foreach ($cart as $id => $item) {
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $id,
-                'quantity' => $item['quantity'],
-                'price' => $item['price'],
-            ]);
-        }
+    // ตรวจสอบว่าเป็น promotion หรือสินค้า
+    $isPromotion = str_starts_with($id, 'promotion_');
+
+    OrderItem::create([
+        'order_id' => $order->id,
+        'product_id' => $isPromotion ? null : $id, // ถ้าเป็น promotion ให้ใส่ null  
+        'promotion_id' => $isPromotion ? str_replace('promotion_', '', $id) : null, // เพิ่มบรรทัดนี้ถ้ามีคอลัมน์ promotion_id
+        'quantity' => $item['quantity'],
+        'price' => $item['price'],
+    ]);
+}
+
 
         // เคลียร์ตะกร้า
         session()->forget('cart');
@@ -72,11 +77,12 @@ class OrderController extends Controller
     // แสดงรายละเอียดคำสั่งซื้อเฉพาะ order
     public function showOrder($id)
     {
-        $order = Order::with('items.product')
-            ->where('user_id', auth()->id())
-            ->findOrFail($id);
+    $order = Order::with(['items.product', 'items.promotion'])
+        ->where('user_id', auth()->id())
+        ->findOrFail($id);
 
-        return view('orders.show', compact('order'));
+    return view('orders.show', compact('order'));
     }
+
 
 }
