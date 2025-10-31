@@ -10,7 +10,9 @@
                     </svg>
                     <p class="text-gray-500 text-lg mb-2">No orders yet.</p>
                     <p class="text-gray-400 text-sm mb-4">Start shopping to create your first order!</p>
-                    <a href="{{ route('products.index') }}" class="inline-block bg-amber-600 text-white px-6 py-2 rounded-lg hover:bg-amber-700 transition-colors">
+                    <a href="{{ route('products.index') }}" 
+                        class="inline-block text-white px-6 py-2 rounded-lg transition-colors hover:bg-[#7A4F33]" 
+                        style="background-color: #8B5E3C;">
                         Browse Products
                     </a>
                 </div>
@@ -45,15 +47,17 @@
                                 <div class="col-span-3 text-center text-red-600 font-bold text-lg">{{ number_format($order->total, 0) }} THB</div>
 
                                 <div class="col-span-2 text-center">
-                                    <a href="{{ route('orders.show', $order->id) }}" 
-                                       class="inline-flex items-center justify-center bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors text-sm font-semibold">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                        </svg>
-                                        View
-                                    </a>
-                                </div>
+    <a href="{{ route('orders.show', $order->id) }}" 
+       class="inline-flex items-center justify-center text-black px-4 py-2 rounded-lg hover:opacity-90 transition-colors text-sm font-semibold"
+       style="background-color: #F3B97A;">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+        </svg>
+        View
+    </a>
+</div>
+
                             </div>
                         @endforeach
                     </div>

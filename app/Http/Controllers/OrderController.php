@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
+use App\Models\Promotion;
 
 class OrderController extends Controller
 {
@@ -40,18 +42,34 @@ class OrderController extends Controller
         ]);
 
         foreach ($cart as $id => $item) {
-    // ตรวจสอบว่าเป็น promotion หรือสินค้า
     $isPromotion = str_starts_with($id, 'promotion_');
 
-    OrderItem::create([
-        'order_id' => $order->id,
-        'product_id' => $isPromotion ? null : $id, // ถ้าเป็น promotion ให้ใส่ null  
-        'promotion_id' => $isPromotion ? str_replace('promotion_', '', $id) : null, // เพิ่มบรรทัดนี้ถ้ามีคอลัมน์ promotion_id
-        'quantity' => $item['quantity'],
-        'price' => $item['price'],
-    ]);
-}
+    if ($isPromotion) {
+        $promotionId = str_replace('promotion_', '', $id);
+        $promotion = Promotion::find($promotionId);
 
+        OrderItem::create([
+            'order_id' => $order->id,
+            'product_id' => null,
+            'promotion_id' => $promotionId,
+            'name' => $promotion?->name ?? 'Deleted Promotion',
+            'quantity' => $item['quantity'],
+            'price' => $item['price'],
+        ]);
+    } else {
+        $productId = (int) $id; // แปลงเป็น integer
+        $product = Product::find($productId);
+
+        OrderItem::create([
+            'order_id' => $order->id,
+            'product_id' => $productId,
+            'promotion_id' => null,
+            'name' => $product?->name ?? 'Deleted Product', // ถ้า null จะขึ้น Deleted Product
+            'quantity' => $item['quantity'],
+            'price' => $item['price'],
+        ]);
+    }
+}
 
         // เคลียร์ตะกร้า
         session()->forget('cart');

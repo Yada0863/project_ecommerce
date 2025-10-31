@@ -12,15 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_items', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('product_id');
-            $table->integer('quantity');
-            $table->decimal('price', 10, 2);
-            $table->timestamps();
+    $table->engine = 'InnoDB';  // เพิ่มตรงนี้
+    $table->id();
+    $table->unsignedBigInteger('order_id');
+    $table->unsignedBigInteger('product_id')->nullable();
+    $table->unsignedBigInteger('promotion_id')->nullable();
+    $table->integer('quantity');
+    $table->decimal('price', 10, 2);
+    $table->timestamps();
 
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-        });
+    $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+});
+
     }
 
     /**
