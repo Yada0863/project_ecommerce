@@ -16,7 +16,7 @@
                    class="inline-block mt-8 text-white px-6 py-2 rounded-md font-medium transition hover:opacity-90"
                    style="background-color: #704214;">
                     Back to Home Page  
-                </a>
+                </a>  
             </div>
         </div>
     </div>
