@@ -15,7 +15,7 @@
                         style="background-color: #8B5E3C;">
                         Browse Products
                     </a>
-                </div>
+                </div> 
             @else 
                 <div class="bg-white rounded-lg shadow overflow-hidden">
                     <!-- Table Header -->

@@ -9,7 +9,7 @@ use App\Models\Product;
 use App\Models\Promotion;
 
 class OrderController extends Controller
-{
+{ 
     // แสดงหน้าชำระเงิน (Checkout) 
     public function checkout()
     {

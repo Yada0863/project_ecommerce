@@ -12,7 +12,7 @@ return new class extends Migration
             $table->string('name')->nullable()->after('promotion_id');
         });
     }
-
+ 
     public function down(): void 
     {
         Schema::table('order_items', function (Blueprint $table) {
