@@ -60,7 +60,7 @@
                                     ฿{{ number_format($item->price * $item->quantity, 2) }}
                                 </td>
                             </tr>
-                            @endforeach
+                            @endforeach 
                         </tbody> 
                     </table>
                 </div>

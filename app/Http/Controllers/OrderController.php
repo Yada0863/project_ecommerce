@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
-use App\Models\Promotion;
+use App\Models\Promotion; 
 
 class OrderController extends Controller
 { 
