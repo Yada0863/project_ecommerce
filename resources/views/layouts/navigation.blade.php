@@ -61,17 +61,19 @@
 
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.show')" 
-                                             class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <x-dropdown-link :href="route('logout')" 
-                                                 class="text-[#4A403A] !text-[#4A403A] hover:!text-[#4A403A] focus:!text-[#4A403A] active:!text-[#4A403A]"
-                                                 onclick="event.preventDefault(); this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
+                 class="bg-white text-black hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black active:bg-gray-100 active:text-black">
+    {{ __('Profile') }}
+</x-dropdown-link>
+
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <x-dropdown-link :href="route('logout')" 
+                     class="bg-white text-black hover:text-black focus:bg-white-100 focus:text-black active:bg-gray-100 active:text-black"
+                     onclick="event.preventDefault(); this.closest('form').submit();">
+        {{ __('Log Out') }}
+    </x-dropdown-link>
+</form>
+
                         </x-slot>
                     </x-dropdown>
                 @else
