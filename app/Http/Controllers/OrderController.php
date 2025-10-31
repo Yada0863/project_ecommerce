@@ -10,7 +10,7 @@ use App\Models\Promotion;
 
 class OrderController extends Controller
 {
-    // แสดงหน้าชำระเงิน (Checkout)
+    // แสดงหน้าชำระเงิน (Checkout) 
     public function checkout()
     {
         $cart = session()->get('cart', []);

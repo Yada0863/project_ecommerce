@@ -75,7 +75,7 @@
                    onmouseout="this.style.backgroundColor='#8B5E3C';">
                    ← Back to Orders
                 </a>
-            </div>
+            </div> 
         </div>
     </div>
 </x-app-layout>

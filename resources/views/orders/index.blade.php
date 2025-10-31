@@ -16,7 +16,7 @@
                         Browse Products
                     </a>
                 </div>
-            @else
+            @else 
                 <div class="bg-white rounded-lg shadow overflow-hidden">
                     <!-- Table Header -->
                     <div class="bg-amber-200 grid grid-cols-12 gap-4 p-4 font-semibold text-gray-700"  style="background-color: #C8A98C;">
